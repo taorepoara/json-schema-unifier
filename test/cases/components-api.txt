@@ -1,0 +1,1 @@
+components-api/api/component.schema.json

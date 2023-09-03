@@ -1,0 +1,42 @@
+{
+  "name": "@lenra/json-schema-unifier",
+  "types": "dist/lib/index.d.ts",
+  "main": "dist/lib/index.js",
+  "version": "0.0.0",
+  "description": "",
+  "type": "module",
+  "keywords": [
+    "JSON Schema",
+    "Unifier"
+  ],
+  "bin": {
+    "json-schema-unify": "dist/bin/unify.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  },
+  "dependencies": {
+    "yaml": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^18.13.0",
+    "jest": "^29.4.1",
+    "ts-jest": "^29.0.5",
+    "typescript": "^5.0.4"
+  },
+  "author": "Lenra",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lenra-io/json-schema-unifier.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lenra-io/json-schema-unifier/issues"
+  },
+  "homepage": "https://github.com/lenra-io/json-schema-unifier.git#readme"
+}

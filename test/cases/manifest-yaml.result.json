@@ -1,0 +1,145 @@
+{
+  "$id": "https://test.fr/manifest.json",
+  "title": "Manifest",
+  "description": "The Lenra application manifest",
+  "type": "object",
+  "properties": {
+    "lenra": {
+      "description": "The Lenra exposer definition of the application",
+      "$ref": "#/definitions/exposer"
+    },
+    "json": {
+      "description": "The JSON exposer definition of the application",
+      "$ref": "#/definitions/exposer"
+    }
+  },
+  "additionalProperties": false,
+  "oneOf": [
+    {
+      "required": [
+        "lenra"
+      ]
+    },
+    {
+      "required": [
+        "json"
+      ]
+    }
+  ],
+  "definitions": {
+    "exposer": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "routes": {
+          "description": "The routes of the application for this exposer",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/route"
+          }
+        }
+      },
+      "required": [
+        "routes"
+      ],
+      "additionalProperties": false
+    },
+    "route": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "view": {
+          "$ref": "#/definitions/components-api/api/components/view "
+        }
+      },
+      "required": [
+        "path",
+        "view"
+      ],
+      "additionalProperties": false
+    },
+    "components-api": {
+      "api": {
+        "components": {
+          "view ": {
+            "title": "View",
+            "description": "Element of type view",
+            "type": "component",
+            "properties": {
+              "type": {
+                "description": "The identifier of the component",
+                "enum": [
+                  "view"
+                ]
+              },
+              "name": {
+                "description": "The name of the view",
+                "type": "string"
+              },
+              "props": {
+                "$ref": "#/definitions/components-api/api/defs/props "
+              },
+              "find": {
+                "description": "Find query.",
+                "$ref": "#/definitions/components-api/api/defs/find "
+              },
+              "query": {
+                "description": "The query to apply to the data.",
+                "type": "object",
+                "deprecated": true
+              },
+              "coll": {
+                "description": "the collection where the query is applied",
+                "type": "string",
+                "deprecated": true
+              },
+              "context": {
+                "description": "The context projection. This field represents the projection of the context, allowing selective retrieval of specific elements. It is a map that specifies the desired elements to be included in the projection.",
+                "type": "object"
+              }
+            },
+            "required": [
+              "type",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "defs": {
+          "props ": {
+            "title": "Props",
+            "description": "Parameters passed to the listener",
+            "type": "object"
+          },
+          "find ": {
+            "title": "Find",
+            "description": "Find query.",
+            "type": "object",
+            "properties": {
+              "query": {
+                "description": "The query to apply to the data.",
+                "type": "object"
+              },
+              "coll": {
+                "description": "the collection where the query is applied",
+                "type": "string"
+              },
+              "projection": {
+                "description": "Filter data object.",
+                "type": "object"
+              }
+            },
+            "required": [
+              "coll"
+            ],
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  }
+}
