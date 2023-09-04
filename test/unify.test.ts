@@ -10,7 +10,7 @@ describe("Unify", () => {
             const unifier = new JsonSchemaUnifier(`test/${file}`);
             const result = unifier.unify();
             const caseResult = JSON.parse(readFileSync(`test/cases/${test.replace('.txt', '.result.json')}`, 'utf-8'));
-            expect(await result).toBe(caseResult);
+            expect(await result).toEqual(caseResult);
         });
     });
 });
