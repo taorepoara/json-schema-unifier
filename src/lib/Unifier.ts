@@ -98,7 +98,7 @@ export class JsonSchemaUnifier {
         if (parts.length > 1) {
             defPathParts.push(...parts[1].split("/").filter(p => p));
         }
-        return `#/definitions/${defPathParts.join("/")} `;
+        return `#/definitions/${defPathParts.join("/")}`;
     }
 
     private unifySchemata(): any {

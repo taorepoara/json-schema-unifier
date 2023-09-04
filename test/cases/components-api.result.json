@@ -79,7 +79,7 @@
       "actionable ": {
         "title": "Actionable",
         "description": "Element of type Actionable",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -123,7 +123,7 @@
       "button ": {
         "title": "Button",
         "description": "Element of type Button",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -170,7 +170,7 @@
       "carousel ": {
         "title": "Carousel",
         "description": "Element of type Carousel",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -196,7 +196,7 @@
       "checkbox ": {
         "title": "Checkbox",
         "description": "Element of type Checkbox",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -239,7 +239,7 @@
       "container ": {
         "title": "Container",
         "description": "Element of type container",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -272,7 +272,7 @@
       "dropdownButton ": {
         "title": "DropdownButton",
         "description": "Element of type Dropdown Button",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -310,7 +310,7 @@
       "flex ": {
         "title": "Flex",
         "description": "Element of type Flex",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -388,7 +388,7 @@
       "flexible ": {
         "title": "Flexible",
         "description": "Element of type Flexible",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -415,7 +415,7 @@
       "form ": {
         "title": "Form",
         "description": "Element of type Form",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -438,7 +438,7 @@
       "icon ": {
         "title": "Icon",
         "description": "The Icon to use",
-        "type": "component",
+        "type": "object",
         "additionalProperties": false,
         "required": [
           "type",
@@ -491,7 +491,7 @@
       "image ": {
         "title": "Image",
         "description": "Element of type Image",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -569,7 +569,7 @@
       "menu ": {
         "title": "Menu",
         "description": "Element of type Menu",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -592,7 +592,7 @@
       "menuItem ": {
         "title": "MenuItem",
         "description": "Element of type MenuItem",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -630,7 +630,7 @@
       "overlayEntry ": {
         "title": "OverlayEntry",
         "description": "Element of type OverlayEntry",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -664,7 +664,7 @@
       "radio ": {
         "title": "Radio",
         "description": "Element of type Radio",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -713,7 +713,7 @@
       "slider ": {
         "title": "Slider",
         "description": "Element of type Slider",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -777,7 +777,7 @@
       "stack ": {
         "title": "Stack",
         "description": "Element of type Stack",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -806,7 +806,7 @@
       "statusSticker ": {
         "title": "StatusSticker",
         "description": "Element of type StatusSticker",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -834,7 +834,7 @@
       "text ": {
         "title": "Text",
         "description": "Element of type Text",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -889,7 +889,7 @@
       "textfield ": {
         "title": "TextField",
         "description": "Element of type TextField",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -1019,7 +1019,7 @@
       "toggle ": {
         "title": "Toggle",
         "description": "Element of type Toggle",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The type of the element.",
@@ -1072,7 +1072,7 @@
       "view ": {
         "title": "View",
         "description": "Element of type view",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -1115,7 +1115,7 @@
       "wrap ": {
         "title": "Wrap",
         "description": "Element of type Wrap",
-        "type": "component",
+        "type": "object",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -1250,7 +1250,7 @@
       },
       "listener ": {
         "title": "Listener",
-        "type": "listener",
+        "type": "object",
         "properties": {
           "action": {
             "description": "The action name to call",
@@ -1579,7 +1579,7 @@
             "$ref": "#/definitions/defs/padding "
           },
           "counter": {
-            "type": "component"
+            "type": "object"
           },
           "counterStyle": {
             "description": "The style use for the counterText.",
@@ -1726,7 +1726,7 @@
             "type": "string"
           },
           "suffix": {
-            "type": "component"
+            "type": "object"
           },
           "suffixIcon": {
             "$ref": "#/definitions/components/icon "

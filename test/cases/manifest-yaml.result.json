@@ -53,7 +53,7 @@
           "type": "string"
         },
         "view": {
-          "$ref": "#/definitions/components-api/api/components/view "
+          "$ref": "#/definitions/components-api/api/components/view"
         }
       },
       "required": [
@@ -68,7 +68,7 @@
           "view ": {
             "title": "View",
             "description": "Element of type view",
-            "type": "component",
+            "type": "object",
             "properties": {
               "type": {
                 "description": "The identifier of the component",
@@ -81,11 +81,11 @@
                 "type": "string"
               },
               "props": {
-                "$ref": "#/definitions/components-api/api/defs/props "
+                "$ref": "#/definitions/components-api/api/defs/props"
               },
               "find": {
                 "description": "Find query.",
-                "$ref": "#/definitions/components-api/api/defs/find "
+                "$ref": "#/definitions/components-api/api/defs/find"
               },
               "query": {
                 "description": "The query to apply to the data.",
@@ -110,12 +110,12 @@
           }
         },
         "defs": {
-          "props ": {
+          "props": {
             "title": "Props",
             "description": "Parameters passed to the listener",
             "type": "object"
           },
-          "find ": {
+          "find": {
             "title": "Find",
             "description": "Find query.",
             "type": "object",
