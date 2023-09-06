@@ -48,40 +48,42 @@ while (args.length > 0) {
     }
 }
 
+// Check that the required parameters are provided
+if (!params.schema) throw new Error("No schema provided");
+if (!params.output) throw new Error("No output path provided");
+if (params.output !== "-") {
+    if (params.format) {
+        // Check that the format match the output extension
+        const pattern = params.format === "json" ? /\.json$/ : /\.ya?ml$/;
+        if (!pattern.test(params.output)) {
+            throw new Error(`Invalid output path "${params.output}" for format "${params.format}"`);
+        }
+    }
+    else {
+        // Set the output format based on the extension
+        const extension = params.output.split(".").pop().toLocaleLowerCase();
+        switch (extension) {
+            case "json":
+                params.format = "json";
+                break;
+            case "yaml":
+            case "yml":
+                params.format = "yaml";
+                break;
+            default:
+                throw new Error(`Invalid output path "${params.output}"`);
+        }
+    }
+}
+else if (!params.format) {
+    params.format = "json";
+}
+
 run(params).catch(e => {
     console.error(e);
 });
 
 async function run(params: Params) {
-    if (!params.schema) throw new Error("No schema provided");
-    if (!params.output) throw new Error("No output path provided");
-    if (params.output !== "-") {
-        if (params.format) {
-            // Check that the format match the output extension
-            const pattern = params.format === "json" ? /\.json$/ : /\.ya?ml$/;
-            if (!pattern.test(params.output)) {
-                throw new Error(`Invalid output path "${params.output}" for format "${params.format}"`);
-            }
-        }
-        else {
-            // Set the output format based on the extension
-            const extension = params.output.split(".").pop().toLocaleLowerCase();
-            switch (extension) {
-                case "json":
-                    params.format = "json";
-                    break;
-                case "yaml":
-                case "yml":
-                    params.format = "yaml";
-                    break;
-                default:
-                    throw new Error(`Invalid output path "${params.output}"`);
-            }
-        }
-    }
-    else if (!params.format) {
-        params.format = "json";
-    }
     log("Unify", params.schema);
     const unifiedSchema = await JsonSchemaUnifier.unify(params.schema, { logs: params.logs });
     const content = params.format === "json" ? JSON.stringify(unifiedSchema, null, 2) : YAML.stringify(unifiedSchema);
