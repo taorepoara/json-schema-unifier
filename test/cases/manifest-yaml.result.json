@@ -65,10 +65,10 @@
     "components-api": {
       "api": {
         "components": {
-          "view ": {
+          "view": {
             "title": "View",
             "description": "Element of type view",
-            "type": "object",
+            "type": "component",
             "properties": {
               "type": {
                 "description": "The identifier of the component",

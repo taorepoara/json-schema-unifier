@@ -8,12 +8,17 @@ interface SchemaLoader {
     newPath?: string;
 }
 
+interface JsonSchemaUnifierOptions {
+    logs?: boolean;
+}
+
 
 /**
  * Class to manage the unification of the different JSON Schemata from a main one
  * Call the unify method to get the unified schema
  */
 export class JsonSchemaUnifier {
+    private options: JsonSchemaUnifierOptions;
     private mainSchemaPath: string;
     private schemata: { [key: string]: SchemaLoader };
     private toLoad: string[];
@@ -22,9 +27,10 @@ export class JsonSchemaUnifier {
      * Constructor
      * @param schema The main schema path
      */
-    constructor(schemaPath: string) {
+    constructor(schemaPath: string, options: JsonSchemaUnifierOptions = {}) {
+        this.options = options;
         this.mainSchemaPath = resolve(schemaPath);
-        this.schemata = { [this.mainSchemaPath]: {} };
+        this.schemata = { [this.mainSchemaPath]: { newPath: "#" } };
         this.toLoad = [this.mainSchemaPath];
     }
 
@@ -51,6 +57,8 @@ export class JsonSchemaUnifier {
                     this.schemata[ref] = { newPath: this.newPath(ref) };
                     this.toLoad.push(ref);
                 }
+
+                this.log("Ref", ref, this.schemata[ref].newPath);
                 schema[key] = this.schemata[ref].newPath;
             }
             else if (Array.isArray(value)) {
@@ -66,7 +74,7 @@ export class JsonSchemaUnifier {
 
     private async loadSchema(schemaPath: string) {
         if (this.schemata[schemaPath].schema) return this.schemata[schemaPath].schema;
-        console.log("Loading", schemaPath);
+        this.log("Loading", schemaPath);
         const parts = schemaPath.split("#");
         const filePath = parts[0];
         let schema: any;
@@ -83,11 +91,11 @@ export class JsonSchemaUnifier {
     }
 
     private newPath(path: string): string {
-        console.log("newPath", path);
+        this.log("newPath", path);
         const parts = path.split("#");
         if (parts[0] === this.mainSchemaPath) return `#${parts[1]}`;
         const relativePath = relative(this.mainSchemaPath, parts[0]);
-        console.log("Relative path", relativePath);
+        this.log("Relative path", relativePath);
         const defPathParts = [
             ...relativePath
                 .replace(/^(\.+[\\/])+/i, "")
@@ -106,7 +114,7 @@ export class JsonSchemaUnifier {
         Object.keys(this.schemata)
             .filter(schemaPath => schemaPath.split("#").length === 1 && schemaPath !== this.mainSchemaPath)
             .forEach(schemaPath => {
-                console.log("Adding", schemaPath);
+                this.log("Adding", schemaPath);
                 const loader = this.schemata[schemaPath];
                 const pathParts = loader.newPath.split("#")[1].split("/").filter(p => p);
                 const lastKey = pathParts.pop();
@@ -121,6 +129,15 @@ export class JsonSchemaUnifier {
             });
         return unifiedSchema;
     }
+
+    log(...args) {
+        if (this.options.logs) console.log(...args);
+    }
+
+    static unify(schemaPath: string, options: JsonSchemaUnifierOptions = {}): Promise<any> {
+        const unifier = new JsonSchemaUnifier(schemaPath, options);
+        return unifier.unify();
+    }
 }
 
 /**
@@ -128,6 +145,6 @@ export class JsonSchemaUnifier {
  * @param item
  * @returns {boolean}
  */
-export function isObject(item) {
+function isObject(item) {
     return (item && typeof item === 'object' && !Array.isArray(item));
 }

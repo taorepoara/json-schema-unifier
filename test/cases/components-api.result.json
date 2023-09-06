@@ -5,81 +5,81 @@
   "description": "Any component",
   "oneOf": [
     {
-      "$ref": "#/definitions/components/actionable "
+      "$ref": "#/definitions/components/actionable"
     },
     {
-      "$ref": "#/definitions/components/button "
+      "$ref": "#/definitions/components/button"
     },
     {
-      "$ref": "#/definitions/components/carousel "
+      "$ref": "#/definitions/components/carousel"
     },
     {
-      "$ref": "#/definitions/components/checkbox "
+      "$ref": "#/definitions/components/checkbox"
     },
     {
-      "$ref": "#/definitions/components/container "
+      "$ref": "#/definitions/components/container"
     },
     {
-      "$ref": "#/definitions/components/dropdownButton "
+      "$ref": "#/definitions/components/dropdownButton"
     },
     {
-      "$ref": "#/definitions/components/flex "
+      "$ref": "#/definitions/components/flex"
     },
     {
-      "$ref": "#/definitions/components/flexible "
+      "$ref": "#/definitions/components/flexible"
     },
     {
-      "$ref": "#/definitions/components/form "
+      "$ref": "#/definitions/components/form"
     },
     {
-      "$ref": "#/definitions/components/icon "
+      "$ref": "#/definitions/components/icon"
     },
     {
-      "$ref": "#/definitions/components/image "
+      "$ref": "#/definitions/components/image"
     },
     {
-      "$ref": "#/definitions/components/menu "
+      "$ref": "#/definitions/components/menu"
     },
     {
-      "$ref": "#/definitions/components/menuItem "
+      "$ref": "#/definitions/components/menuItem"
     },
     {
-      "$ref": "#/definitions/components/overlayEntry "
+      "$ref": "#/definitions/components/overlayEntry"
     },
     {
-      "$ref": "#/definitions/components/radio "
+      "$ref": "#/definitions/components/radio"
     },
     {
-      "$ref": "#/definitions/components/slider "
+      "$ref": "#/definitions/components/slider"
     },
     {
-      "$ref": "#/definitions/components/stack "
+      "$ref": "#/definitions/components/stack"
     },
     {
-      "$ref": "#/definitions/components/statusSticker "
+      "$ref": "#/definitions/components/statusSticker"
     },
     {
-      "$ref": "#/definitions/components/text "
+      "$ref": "#/definitions/components/text"
     },
     {
-      "$ref": "#/definitions/components/textfield "
+      "$ref": "#/definitions/components/textfield"
     },
     {
-      "$ref": "#/definitions/components/toggle "
+      "$ref": "#/definitions/components/toggle"
     },
     {
-      "$ref": "#/definitions/components/view "
+      "$ref": "#/definitions/components/view"
     },
     {
-      "$ref": "#/definitions/components/wrap "
+      "$ref": "#/definitions/components/wrap"
     }
   ],
   "definitions": {
     "components": {
-      "actionable ": {
+      "actionable": {
         "title": "Actionable",
         "description": "Element of type Actionable",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -87,26 +87,28 @@
               "actionable"
             ]
           },
-          "child": {},
+          "child": {
+            "$ref": "#"
+          },
           "onPressed": {
             "description": "The listener to be called when the actionable is pressed.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onDoublePressed": {
             "description": "The listener to be called when the actionable is double pressed.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onLongPressed": {
             "description": "The listener to be called when the actionable is long pressed.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onPressedCancel": {
             "description": "The listener to be called when the actionable is pressed inside and released outside of the actionable, causing it to cancel the press action.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onHovered": {
             "description": "The listener to be called when the actionable is hovered and when the mouse exits the hoverable area.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "submit": {
             "description": "Whether the actionable can submit a form.",
@@ -120,10 +122,10 @@
         ],
         "additionalProperties": false
       },
-      "button ": {
+      "button": {
         "title": "Button",
         "description": "Element of type Button",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -141,19 +143,19 @@
             "default": false
           },
           "size": {
-            "$ref": "#/definitions/defs/size "
+            "$ref": "#/definitions/defs/size"
           },
           "mainStyle": {
-            "$ref": "#/definitions/defs/style "
+            "$ref": "#/definitions/defs/style"
           },
           "onPressed": {
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "leftIcon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "rightIcon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "submit": {
             "description": "Whether the button is a submit button for a form.",
@@ -167,10 +169,10 @@
         ],
         "additionalProperties": false
       },
-      "carousel ": {
+      "carousel": {
         "title": "Carousel",
         "description": "Element of type Carousel",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -181,10 +183,12 @@
           "children": {
             "description": "The children",
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#"
+            }
           },
           "options": {
-            "$ref": "#/definitions/defs/carouselOptions "
+            "$ref": "#/definitions/defs/carouselOptions"
           }
         },
         "required": [
@@ -193,10 +197,10 @@
         ],
         "additionalProperties": false
       },
-      "checkbox ": {
+      "checkbox": {
         "title": "Checkbox",
         "description": "Element of type Checkbox",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -213,13 +217,13 @@
             "type": "boolean"
           },
           "onPressed": {
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "style": {
-            "$ref": "#/definitions/defs/checkboxStyle "
+            "$ref": "#/definitions/defs/checkboxStyle"
           },
           "materialTapTargetSize": {
-            "$ref": "#/definitions/defs/materialTapTargetSize "
+            "$ref": "#/definitions/defs/materialTapTargetSize"
           },
           "autofocus": {
             "description": "Whether the checkbox is focused initially.",
@@ -236,10 +240,10 @@
         ],
         "additionalProperties": false
       },
-      "container ": {
+      "container": {
         "title": "Container",
         "description": "Element of type container",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -247,21 +251,23 @@
               "container"
             ]
           },
-          "child": {},
+          "child": {
+            "$ref": "#"
+          },
           "alignment": {
-            "$ref": "#/definitions/defs/alignment "
+            "$ref": "#/definitions/defs/alignment"
           },
           "border": {
-            "$ref": "#/definitions/defs/border "
+            "$ref": "#/definitions/defs/border"
           },
           "padding": {
-            "$ref": "#/definitions/defs/padding "
+            "$ref": "#/definitions/defs/padding"
           },
           "constraints": {
-            "$ref": "#/definitions/defs/boxConstraints "
+            "$ref": "#/definitions/defs/boxConstraints"
           },
           "decoration": {
-            "$ref": "#/definitions/defs/boxDecoration "
+            "$ref": "#/definitions/defs/boxDecoration"
           }
         },
         "required": [
@@ -269,10 +275,10 @@
         ],
         "additionalProperties": false
       },
-      "dropdownButton ": {
+      "dropdownButton": {
         "title": "DropdownButton",
         "description": "Element of type Dropdown Button",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -290,14 +296,16 @@
             "default": false
           },
           "size": {
-            "$ref": "#/definitions/defs/size "
+            "$ref": "#/definitions/defs/size"
           },
           "mainStyle": {
-            "$ref": "#/definitions/defs/style "
+            "$ref": "#/definitions/defs/style"
           },
-          "child": {},
+          "child": {
+            "$ref": "#"
+          },
           "icon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           }
         },
         "required": [
@@ -307,10 +315,10 @@
         ],
         "additionalProperties": false
       },
-      "flex ": {
+      "flex": {
         "title": "Flex",
         "description": "Element of type Flex",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -321,10 +329,12 @@
           "children": {
             "description": "The children",
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#"
+            }
           },
           "direction": {
-            "$ref": "#/definitions/defs/direction "
+            "$ref": "#/definitions/defs/direction"
           },
           "mainAxisAlignment": {
             "description": "The alignment along the main axis",
@@ -367,16 +377,16 @@
             "default": false
           },
           "padding": {
-            "$ref": "#/definitions/defs/padding "
+            "$ref": "#/definitions/defs/padding"
           },
           "horizontalDirection": {
-            "$ref": "#/definitions/defs/textDirection "
+            "$ref": "#/definitions/defs/textDirection"
           },
           "verticalDirection": {
-            "$ref": "#/definitions/defs/verticalDirection "
+            "$ref": "#/definitions/defs/verticalDirection"
           },
           "textBaseline": {
-            "$ref": "#/definitions/defs/textBaseline "
+            "$ref": "#/definitions/defs/textBaseline"
           }
         },
         "required": [
@@ -385,10 +395,10 @@
         ],
         "additionalProperties": false
       },
-      "flexible ": {
+      "flexible": {
         "title": "Flexible",
         "description": "Element of type Flexible",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -402,31 +412,10 @@
             "default": 1
           },
           "fit": {
-            "$ref": "#/definitions/defs/flexFit "
+            "$ref": "#/definitions/defs/flexFit"
           },
-          "child": {}
-        },
-        "required": [
-          "type",
-          "child"
-        ],
-        "additionalProperties": false
-      },
-      "form ": {
-        "title": "Form",
-        "description": "Element of type Form",
-        "type": "object",
-        "properties": {
-          "type": {
-            "description": "The type of the element",
-            "enum": [
-              "form"
-            ]
-          },
-          "child": {},
-          "onSubmit": {
-            "description": "Callback when the user submits the form.",
-            "$ref": "#/definitions/defs/listener "
+          "child": {
+            "$ref": "#"
           }
         },
         "required": [
@@ -435,10 +424,35 @@
         ],
         "additionalProperties": false
       },
-      "icon ": {
+      "form": {
+        "title": "Form",
+        "description": "Element of type Form",
+        "type": "component",
+        "properties": {
+          "type": {
+            "description": "The type of the element",
+            "enum": [
+              "form"
+            ]
+          },
+          "child": {
+            "$ref": "#"
+          },
+          "onSubmit": {
+            "description": "Callback when the user submits the form.",
+            "$ref": "#/definitions/defs/listener"
+          }
+        },
+        "required": [
+          "type",
+          "child"
+        ],
+        "additionalProperties": false
+      },
+      "icon": {
         "title": "Icon",
         "description": "The Icon to use",
-        "type": "object",
+        "type": "component",
         "additionalProperties": false,
         "required": [
           "type",
@@ -458,7 +472,7 @@
           },
           "color": {
             "description": "The color of the Icon. If not set or null, the color is inherited from the theme.",
-            "$ref": "#/definitions/defs/color ",
+            "$ref": "#/definitions/defs/color",
             "default": null
           },
           "semanticLabel": {
@@ -468,10 +482,10 @@
           },
           "value": {
             "description": "The value of the Icon",
-            "$ref": "#/definitions/defs/iconName "
+            "$ref": "#/definitions/defs/iconName"
           },
           "style": {
-            "$ref": "#/definitions/components/icon/definitions/iconStyle "
+            "$ref": "#/definitions/components/icon/definitions/iconStyle"
           }
         },
         "definitions": {
@@ -488,10 +502,10 @@
           }
         }
       },
-      "image ": {
+      "image": {
         "title": "Image",
         "description": "Element of type Image",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -513,14 +527,15 @@
           },
           "alignment": {
             "description": "How to align the image.",
-            "$ref": "#/definitions/defs/alignment "
+            "$ref": "#/definitions/defs/alignment"
           },
           "centerSlice": {
             "description": "The center slice for a nine-patch image.",
-            "$ref": "#/definitions/defs/rect "
+            "$ref": "#/definitions/defs/rect"
           },
           "errorPlaceholder": {
-            "description": "The error placeholder when the image encounters an error during loading."
+            "description": "The error placeholder when the image encounters an error during loading.",
+            "$ref": "#"
           },
           "excludeFromSemantics": {
             "description": "Whether to exclude this image from semantics.",
@@ -529,14 +544,15 @@
           },
           "filterQuality": {
             "description": "The quality of the image.",
-            "$ref": "#/definitions/defs/filterQuality "
+            "$ref": "#/definitions/defs/filterQuality"
           },
           "fit": {
             "description": "How the image should fit the parent box.",
-            "$ref": "#/definitions/defs/boxFit "
+            "$ref": "#/definitions/defs/boxFit"
           },
           "framePlaceholder": {
-            "description": "A placeholder to display while the image is loading or to add effects to the image."
+            "description": "A placeholder to display while the image is loading or to add effects to the image.",
+            "$ref": "#"
           },
           "gaplessPlayback": {
             "description": "Whether the old image (true) or nothing (false) is shown when the image provider changes.",
@@ -549,11 +565,12 @@
             "default": false
           },
           "loadingPlaceholder": {
-            "description": "A placeholder to display while the image is still loading."
+            "description": "A placeholder to display while the image is still loading.",
+            "$ref": "#"
           },
           "repeat": {
             "description": "How the image should be repeated accross the bounds not covered by the image.",
-            "$ref": "#/definitions/defs/imageRepeat "
+            "$ref": "#/definitions/defs/imageRepeat"
           },
           "semanticLabel": {
             "description": "A semantic description of the image. This is used for TalkBack on Android and VoiceOver on IOS.",
@@ -566,10 +583,10 @@
         ],
         "additionalProperties": false
       },
-      "menu ": {
+      "menu": {
         "title": "Menu",
         "description": "Element of type Menu",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -580,7 +597,9 @@
           "children": {
             "type": "array",
             "description": "The menu items",
-            "items": {}
+            "items": {
+              "$ref": "#"
+            }
           }
         },
         "required": [
@@ -589,10 +608,10 @@
         ],
         "additionalProperties": false
       },
-      "menuItem ": {
+      "menuItem": {
         "title": "MenuItem",
         "description": "Element of type MenuItem",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -615,10 +634,10 @@
             "default": false
           },
           "icon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "onPressed": {
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           }
         },
         "required": [
@@ -627,10 +646,10 @@
         ],
         "additionalProperties": false
       },
-      "overlayEntry ": {
+      "overlayEntry": {
         "title": "OverlayEntry",
         "description": "Element of type OverlayEntry",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -638,7 +657,9 @@
               "overlayEntry"
             ]
           },
-          "child": {},
+          "child": {
+            "$ref": "#"
+          },
           "maintainState": {
             "description": "Whether this entry must be included in the tree even if there is a fully opaque entry above it.",
             "type": "boolean",
@@ -661,10 +682,10 @@
         ],
         "additionalProperties": false
       },
-      "radio ": {
+      "radio": {
         "title": "Radio",
         "description": "Element of type Radio",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -686,17 +707,17 @@
           },
           "materialTapTargetSize": {
             "description": "Configures the minimum size of the tap target.",
-            "$ref": "#/definitions/defs/materialTapTargetSize "
+            "$ref": "#/definitions/defs/materialTapTargetSize"
           },
           "onPressed": {
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "toggleable": {
             "description": "Whether the radio is allowed to go from checked to unchecked when clicking on it.",
             "type": "boolean"
           },
           "style": {
-            "$ref": "#/definitions/defs/radioStyle "
+            "$ref": "#/definitions/defs/radioStyle"
           },
           "name": {
             "description": "The name that will be used in the form.",
@@ -710,10 +731,10 @@
         ],
         "additionalProperties": false
       },
-      "slider ": {
+      "slider": {
         "title": "Slider",
         "description": "Element of type Slider",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -722,7 +743,7 @@
             ]
           },
           "style": {
-            "$ref": "#/definitions/defs/sliderStyle "
+            "$ref": "#/definitions/defs/sliderStyle"
           },
           "autofocus": {
             "description": "Whether the slider should be focused initially.",
@@ -749,15 +770,15 @@
           },
           "onChanged": {
             "description": "The callback to be invoked when the slider value changes.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onChangeEnd": {
             "description": "The callback to be invoked when the slider is released.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onChangeStart": {
             "description": "The callback to be invoked when the slider is pressed.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "value": {
             "description": "The current value of the slider.",
@@ -774,10 +795,10 @@
         ],
         "additionalProperties": false
       },
-      "stack ": {
+      "stack": {
         "title": "Stack",
         "description": "Element of type Stack",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -788,13 +809,15 @@
           "children": {
             "description": "The children of the Stack.",
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#"
+            }
           },
           "alignment": {
-            "$ref": "#/definitions/defs/alignment "
+            "$ref": "#/definitions/defs/alignment"
           },
           "fit": {
-            "$ref": "#/definitions/defs/stackFit "
+            "$ref": "#/definitions/defs/stackFit"
           }
         },
         "required": [
@@ -803,10 +826,10 @@
         ],
         "additionalProperties": false
       },
-      "statusSticker ": {
+      "statusSticker": {
         "title": "StatusSticker",
         "description": "Element of type StatusSticker",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -831,10 +854,10 @@
         ],
         "additionalProperties": false
       },
-      "text ": {
+      "text": {
         "title": "Text",
         "description": "Element of type Text",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -847,10 +870,10 @@
             "type": "string"
           },
           "style": {
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "locale": {
-            "$ref": "#/definitions/defs/locale "
+            "$ref": "#/definitions/defs/locale"
           },
           "semanticsLabel": {
             "description": "The value to explain a different semantics",
@@ -876,7 +899,7 @@
             "description": "Additional texts to add after this text.",
             "type": "array",
             "items": {
-              "$ref": "#/definitions/components/text "
+              "$ref": "#/definitions/components/text"
             }
           }
         },
@@ -886,10 +909,10 @@
         ],
         "additionalProperties": false
       },
-      "textfield ": {
+      "textfield": {
         "title": "TextField",
         "description": "Element of type TextField",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element",
@@ -907,7 +930,7 @@
           },
           "autofillHints": {
             "description": "The type of this text input to provide autofill hints.",
-            "$ref": "#/definitions/defs/autofillHints "
+            "$ref": "#/definitions/defs/autofillHints"
           },
           "autofocus": {
             "description": "Whether this Textfield should be focused initially.",
@@ -915,15 +938,15 @@
           },
           "buildCounter": {
             "description": "Callback that generates a custom counter view.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "style": {
             "description": "The style of the Textfield.",
-            "$ref": "#/definitions/defs/textFieldStyle "
+            "$ref": "#/definitions/defs/textFieldStyle"
           },
           "dragStartBehavior": {
             "description": "Determines the way that drag start behavior is handled.",
-            "$ref": "#/definitions/defs/dragStartBehavior "
+            "$ref": "#/definitions/defs/dragStartBehavior"
           },
           "enabled": {
             "description": "Whether the text field is enabled.",
@@ -939,7 +962,7 @@
           },
           "keyboardType": {
             "description": "The type of the keyboard to use for editing the text.",
-            "$ref": "#/definitions/defs/textInputType "
+            "$ref": "#/definitions/defs/textInputType"
           },
           "maxLength": {
             "description": "The maximum number of characters to allow in the text field.",
@@ -947,7 +970,7 @@
           },
           "maxLengthEnforcement": {
             "description": "Determines how the maxLength limit should be enforced.",
-            "$ref": "#/definitions/defs/maxLengthEnforcement "
+            "$ref": "#/definitions/defs/maxLengthEnforcement"
           },
           "maxLines": {
             "description": "The maximum number of lines to show at one time.",
@@ -963,23 +986,23 @@
           },
           "onAppPrivateCommand": {
             "description": "This is used to receive a private command from the input method.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onChanged": {
             "description": "Callback when the user changes the text field value.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onEditingComplete": {
             "description": "Callback when the user finishes editing the text field.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onSubmitted": {
             "description": "Callback when the user tells he is done editing the text field.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "onTap": {
             "description": "Callback when the user taps on the text field.",
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "readOnly": {
             "description": "Whether the text can be changed.",
@@ -991,19 +1014,19 @@
           },
           "textCapitalization": {
             "description": "Configures how the platform keyboard will select an uppercase or lowercase keyboard.",
-            "$ref": "#/definitions/defs/textCapitalization "
+            "$ref": "#/definitions/defs/textCapitalization"
           },
           "textDirection": {
             "description": "The direction of the text.",
-            "$ref": "#/definitions/defs/textDirection "
+            "$ref": "#/definitions/defs/textDirection"
           },
           "textInputAction": {
             "description": "The type of the action button to use for the keyboard.",
-            "$ref": "#/definitions/defs/textInputAction "
+            "$ref": "#/definitions/defs/textInputAction"
           },
           "toolbarOptions": {
             "description": "Configuration of toolbar options",
-            "$ref": "#/definitions/defs/toolbarOptions "
+            "$ref": "#/definitions/defs/toolbarOptions"
           },
           "name": {
             "description": "The name that will be used in the form.",
@@ -1016,10 +1039,10 @@
         ],
         "additionalProperties": false
       },
-      "toggle ": {
+      "toggle": {
         "title": "Toggle",
         "description": "Element of type Toggle",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The type of the element.",
@@ -1048,10 +1071,10 @@
             ]
           },
           "onPressed": {
-            "$ref": "#/definitions/defs/listener "
+            "$ref": "#/definitions/defs/listener"
           },
           "style": {
-            "$ref": "#/definitions/defs/toggleStyle "
+            "$ref": "#/definitions/defs/toggleStyle"
           },
           "name": {
             "description": "The name that will be used in the form.",
@@ -1069,10 +1092,10 @@
         ],
         "additionalProperties": false
       },
-      "view ": {
+      "view": {
         "title": "View",
         "description": "Element of type view",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -1085,11 +1108,11 @@
             "type": "string"
           },
           "props": {
-            "$ref": "#/definitions/defs/props "
+            "$ref": "#/definitions/defs/props"
           },
           "find": {
             "description": "Find query.",
-            "$ref": "#/definitions/defs/find "
+            "$ref": "#/definitions/defs/find"
           },
           "query": {
             "description": "The query to apply to the data.",
@@ -1112,10 +1135,10 @@
         ],
         "additionalProperties": false
       },
-      "wrap ": {
+      "wrap": {
         "title": "Wrap",
         "description": "Element of type Wrap",
-        "type": "object",
+        "type": "component",
         "properties": {
           "type": {
             "description": "The identifier of the component",
@@ -1126,13 +1149,15 @@
           "children": {
             "description": "The children of the wrap.",
             "type": "array",
-            "items": {}
+            "items": {
+              "$ref": "#"
+            }
           },
           "direction": {
-            "$ref": "#/definitions/defs/direction "
+            "$ref": "#/definitions/defs/direction"
           },
           "crossAxisAlignment": {
-            "$ref": "#/definitions/defs/wrapCrossAlignment "
+            "$ref": "#/definitions/defs/wrapCrossAlignment"
           },
           "spacing": {
             "description": "The spacing between each child of the wrap.",
@@ -1145,16 +1170,16 @@
             "default": 0
           },
           "alignment": {
-            "$ref": "#/definitions/defs/wrapAlignment "
+            "$ref": "#/definitions/defs/wrapAlignment"
           },
           "runAlignment": {
-            "$ref": "#/definitions/defs/wrapAlignment "
+            "$ref": "#/definitions/defs/wrapAlignment"
           },
           "horizontalDirection": {
-            "$ref": "#/definitions/defs/textDirection "
+            "$ref": "#/definitions/defs/textDirection"
           },
           "verticalDirection": {
-            "$ref": "#/definitions/defs/verticalDirection "
+            "$ref": "#/definitions/defs/verticalDirection"
           }
         },
         "required": [
@@ -1165,7 +1190,7 @@
       }
     },
     "defs": {
-      "direction ": {
+      "direction": {
         "title": "Direction",
         "description": "The direction of the component (horizontal/vertical)",
         "type": "string",
@@ -1175,7 +1200,7 @@
         ],
         "default": "horizontal"
       },
-      "wrapCrossAlignment ": {
+      "wrapCrossAlignment": {
         "title": "Wrap CrossAlignment",
         "description": "How the objects in the Wrap should be aligned on the CrossAxis.",
         "type": "string",
@@ -1186,7 +1211,7 @@
         ],
         "default": "start"
       },
-      "wrapAlignment ": {
+      "wrapAlignment": {
         "title": "Wrap Alignment",
         "description": "How the objects in the Wrap should be aligned.",
         "type": "string",
@@ -1200,7 +1225,7 @@
         ],
         "default": "start"
       },
-      "textDirection ": {
+      "textDirection": {
         "title": "Text Direction",
         "description": "In which direction the elements should be placed following the horizontal axis.",
         "type": "string",
@@ -1210,7 +1235,7 @@
         ],
         "default": "ltr"
       },
-      "verticalDirection ": {
+      "verticalDirection": {
         "title": "Vertical Direction",
         "description": "How the objects should be aligned following the vertical axis.",
         "type": "string",
@@ -1220,12 +1245,12 @@
         ],
         "default": "down"
       },
-      "props ": {
+      "props": {
         "title": "Props",
         "description": "Parameters passed to the listener",
         "type": "object"
       },
-      "find ": {
+      "find": {
         "title": "Find",
         "description": "Find query.",
         "type": "object",
@@ -1248,9 +1273,9 @@
         ],
         "additionalProperties": false
       },
-      "listener ": {
+      "listener": {
         "title": "Listener",
-        "type": "object",
+        "type": "listener",
         "properties": {
           "action": {
             "description": "The action name to call",
@@ -1267,34 +1292,34 @@
         ],
         "additionalProperties": false
       },
-      "toggleStyle ": {
+      "toggleStyle": {
         "title": "ToggleStyle",
         "description": "Element of type ToggleStyle",
         "type": "object",
         "properties": {
           "activeColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "activeTrackColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "inactiveTrackColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "inactiveThumbColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "hoverColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "focusColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "activeThumbImage": {
-            "$ref": "#/definitions/components/image "
+            "$ref": "#/definitions/components/image"
           },
           "inactiveThumbImage": {
-            "$ref": "#/definitions/components/image "
+            "$ref": "#/definitions/components/image"
           },
           "materialTapTargetSize": {
             "type": "string",
@@ -1306,12 +1331,12 @@
         },
         "additionalProperties": false
       },
-      "color ": {
+      "color": {
         "title": "Color",
         "description": "Color type",
         "type": "integer"
       },
-      "autofillHints ": {
+      "autofillHints": {
         "title": "AutofillHints",
         "description": "The AutofillHints enum to handle textfield's autocompletion.",
         "type": "array",
@@ -1387,14 +1412,14 @@
           ]
         }
       },
-      "textFieldStyle ": {
+      "textFieldStyle": {
         "title": "TextFieldStyle",
         "description": "Element of type TextFieldStyle",
         "type": "object",
         "properties": {
           "cursorColor": {
             "description": "The color of the cursor.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "cursorHeight": {
             "description": "The height of the cursor.",
@@ -1402,7 +1427,7 @@
           },
           "cursorRadius": {
             "description": "The radius of the cursor.",
-            "$ref": "#/definitions/defs/radius "
+            "$ref": "#/definitions/defs/radius"
           },
           "cursorWidth": {
             "description": "The width of the cursor.",
@@ -1410,11 +1435,11 @@
           },
           "decoration": {
             "description": "The decoration of the input.",
-            "$ref": "#/definitions/defs/inputDecoration "
+            "$ref": "#/definitions/defs/inputDecoration"
           },
           "keyboardAppearance": {
             "description": "The appearance of the keyboard.",
-            "$ref": "#/definitions/defs/brightness "
+            "$ref": "#/definitions/defs/brightness"
           },
           "obscuringCharacter": {
             "description": "The character used to obscure the text.",
@@ -1422,35 +1447,35 @@
           },
           "scrollPadding": {
             "description": "The padding of the scrollable when the Textfield scrolls into view.",
-            "$ref": "#/definitions/defs/padding "
+            "$ref": "#/definitions/defs/padding"
           },
           "selectionHeightStyle": {
             "description": "The height of the selection highlight boxes.",
-            "$ref": "#/definitions/defs/boxHeightStyle "
+            "$ref": "#/definitions/defs/boxHeightStyle"
           },
           "selectionWidthStyle": {
             "description": "The width of the selection highlight boxes.",
-            "$ref": "#/definitions/defs/boxWidthStyle "
+            "$ref": "#/definitions/defs/boxWidthStyle"
           },
           "strutStyle": {
-            "$ref": "#/definitions/defs/strutStyle "
+            "$ref": "#/definitions/defs/strutStyle"
           },
           "textStyle": {
             "description": "The style of the text.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "textAlign": {
             "description": "The alignment of the text.",
-            "$ref": "#/definitions/defs/textAlign "
+            "$ref": "#/definitions/defs/textAlign"
           },
           "textAlignVertical": {
             "description": "How the text should be aligned vertically.",
-            "$ref": "#/definitions/defs/textAlignVertical "
+            "$ref": "#/definitions/defs/textAlignVertical"
           }
         },
         "additionalProperties": false
       },
-      "dragStartBehavior ": {
+      "dragStartBehavior": {
         "title": "DragStartBehavior",
         "description": "Component of type DragStartBehavior.",
         "type": "string",
@@ -1459,7 +1484,7 @@
           "down"
         ]
       },
-      "textInputType ": {
+      "textInputType": {
         "title": "TextInputType",
         "description": "Element of textInput Type",
         "type": "object",
@@ -1483,7 +1508,7 @@
         },
         "additionalProperties": false
       },
-      "maxLengthEnforcement ": {
+      "maxLengthEnforcement": {
         "title": "MaxLengthEnforcement",
         "description": "Component of type MaxLengthEnforcement.",
         "type": "string",
@@ -1493,7 +1518,7 @@
           "truncateAfterCompositionEnds"
         ]
       },
-      "textCapitalization ": {
+      "textCapitalization": {
         "title": "TextCapitalization",
         "description": "Component of type TextCapitalization.",
         "type": "string",
@@ -1504,7 +1529,7 @@
           "characters"
         ]
       },
-      "textInputAction ": {
+      "textInputAction": {
         "title": "TextInputAction",
         "description": "Component of type TextInputAction.",
         "type": "string",
@@ -1524,7 +1549,7 @@
           "unspecified"
         ]
       },
-      "toolbarOptions ": {
+      "toolbarOptions": {
         "title": "ToolbarOptions",
         "description": "Element of type toolbar options",
         "type": "object",
@@ -1540,7 +1565,7 @@
         },
         "additionalProperties": false
       },
-      "radius ": {
+      "radius": {
         "title": "Radius",
         "description": "Element of type Radius",
         "type": "object",
@@ -1556,7 +1581,7 @@
         },
         "additionalProperties": false
       },
-      "inputDecoration ": {
+      "inputDecoration": {
         "title": "InputDecoration",
         "description": "Element of type InputDecoration",
         "type": "object",
@@ -1568,22 +1593,22 @@
           },
           "border": {
             "description": "The border to display around the input. Will render a border by default when border is null.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "constraints": {
             "description": "The constraints to be applied to the input.",
-            "$ref": "#/definitions/defs/boxConstraints "
+            "$ref": "#/definitions/defs/boxConstraints"
           },
           "contentPadding": {
             "description": "The padding to be applied to the input.",
-            "$ref": "#/definitions/defs/padding "
+            "$ref": "#/definitions/defs/padding"
           },
           "counter": {
-            "type": "object"
+            "type": "component"
           },
           "counterStyle": {
             "description": "The style use for the counterText.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "counterText": {
             "description": "The text to place below the line as a character counter.",
@@ -1591,7 +1616,7 @@
           },
           "disabledBorder": {
             "description": "The border to display when the input is disabled and not showing an error.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "enabled": {
             "description": "Whether the input is enabled or disabled.",
@@ -1599,11 +1624,11 @@
           },
           "enabledBorder": {
             "description": "The border to display when the input is enabled and not showing an error.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "errorBorder": {
             "description": "The border to display when the input has an error and does not have the focus.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "errorMaxLines": {
             "description": "The maximum number of lines the error text can use.",
@@ -1611,7 +1636,7 @@
           },
           "errorStyle": {
             "description": "The style to use for the error text.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "errorText": {
             "description": "The error text to display when the input has an error.",
@@ -1619,7 +1644,7 @@
           },
           "fillColor": {
             "description": "The fill color of the input.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "filled": {
             "description": "Whether the input is filled with fillColor.",
@@ -1627,23 +1652,23 @@
           },
           "floatingLabelBehavior": {
             "description": "Defines how the floating label should be displayed.",
-            "$ref": "#/definitions/defs/floatingLabelBehavior "
+            "$ref": "#/definitions/defs/floatingLabelBehavior"
           },
           "floatingLabelStyle": {
             "description": "The style to use for the floating label.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "focusColor": {
             "description": "The color to use when the input is focused.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "focusedBorder": {
             "description": "The border to display when the input has the focus.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "focusedErrorBorder": {
             "description": "The border to display when the input has the focus and has an error.",
-            "$ref": "#/definitions/defs/inputBorder "
+            "$ref": "#/definitions/defs/inputBorder"
           },
           "helperMaxLines": {
             "description": "The maximum number of lines the helper text can use.",
@@ -1651,7 +1676,7 @@
           },
           "helperStyle": {
             "description": "The style to use for the helper text.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "helperText": {
             "description": "The helper text to display.",
@@ -1663,7 +1688,7 @@
           },
           "hintStyle": {
             "description": "The style to use for the hint text.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "hintText": {
             "description": "The hint text to display.",
@@ -1671,18 +1696,18 @@
           },
           "hintTextDirection": {
             "description": "The direction of the hint text.",
-            "$ref": "#/definitions/defs/textDirection "
+            "$ref": "#/definitions/defs/textDirection"
           },
           "hoverColor": {
             "description": "The color to use when the input is hovered.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "icon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "iconColor": {
             "description": "The color for the icon",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "isCollapsed": {
             "description": "Whether the decoration is the same size as the input field.",
@@ -1692,30 +1717,34 @@
             "description": "Whether the decoration is dense.",
             "type": "boolean"
           },
-          "label": {},
+          "label": {
+            "$ref": "#"
+          },
           "labelStyle": {
             "description": "The style to use for the label.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "labelText": {
             "description": "The text that describes the input field.",
             "type": "string"
           },
-          "prefix": {},
+          "prefix": {
+            "$ref": "#"
+          },
           "prefixIcon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "prefixIconColor": {
             "description": "the color of the prefixIcon",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "prefixIconConstraints": {
             "description": "The constraints for the prefixIcon.",
-            "$ref": "#/definitions/defs/boxConstraints "
+            "$ref": "#/definitions/defs/boxConstraints"
           },
           "prefixStyle": {
             "description": "The style to use for the prefixText.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "prefixText": {
             "description": "The text to display before the input.",
@@ -1726,22 +1755,22 @@
             "type": "string"
           },
           "suffix": {
-            "type": "object"
+            "type": "component"
           },
           "suffixIcon": {
-            "$ref": "#/definitions/components/icon "
+            "$ref": "#/definitions/components/icon"
           },
           "suffixIconColor": {
             "description": "the color of the sufficIcon",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "suffixIconConstraints": {
             "description": "The constraints for the suffixIcon.",
-            "$ref": "#/definitions/defs/boxConstraints "
+            "$ref": "#/definitions/defs/boxConstraints"
           },
           "suffixStyle": {
             "description": "The style to use for the suffixText.",
-            "$ref": "#/definitions/defs/textStyle "
+            "$ref": "#/definitions/defs/textStyle"
           },
           "suffixText": {
             "description": "The text to display after the input.",
@@ -1750,7 +1779,7 @@
         },
         "additionalProperties": false
       },
-      "brightness ": {
+      "brightness": {
         "title": "Brightness",
         "description": "Component of type Brightness.",
         "type": "string",
@@ -1759,7 +1788,7 @@
           "light"
         ]
       },
-      "padding ": {
+      "padding": {
         "title": "Padding",
         "description": "Element of type Padding",
         "type": "object",
@@ -1783,7 +1812,7 @@
         },
         "additionalProperties": false
       },
-      "boxHeightStyle ": {
+      "boxHeightStyle": {
         "title": "BoxHeightStyle",
         "description": "Component of type BoxHeightStyle.",
         "type": "string",
@@ -1796,7 +1825,7 @@
           "tight"
         ]
       },
-      "boxWidthStyle ": {
+      "boxWidthStyle": {
         "title": "BoxWidthStyle",
         "description": "Component of type BoxWidthStyle.",
         "type": "string",
@@ -1805,7 +1834,7 @@
           "tight"
         ]
       },
-      "strutStyle ": {
+      "strutStyle": {
         "title": "StrutStyle",
         "description": "Defines the strut of a text line.",
         "type": "object",
@@ -1843,29 +1872,29 @@
             "description": "The additional leading of the strut which is a multiple of fontSize."
           },
           "leadingDistribution": {
-            "$ref": "#/definitions/defs/textLeadingDistribution "
+            "$ref": "#/definitions/defs/textLeadingDistribution"
           }
         },
         "additionalProperties": false
       },
-      "textStyle ": {
+      "textStyle": {
         "title": "TextStyle",
         "description": "The style of the Text.",
         "type": "object",
         "properties": {
           "color": {
             "description": "The color of the text.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "decoration": {
-            "$ref": "#/definitions/defs/textDecoration "
+            "$ref": "#/definitions/defs/textDecoration"
           },
           "decorationColor": {
             "description": "The color of the decoration.",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "decorationStyle": {
-            "$ref": "#/definitions/defs/textDecorationStyle "
+            "$ref": "#/definitions/defs/textDecorationStyle"
           },
           "decorationThickness": {
             "description": "The thickness of the decoration.",
@@ -1934,12 +1963,12 @@
             "description": "A list of Shadows that will be painted underneath the text.",
             "type": "array",
             "items": {
-              "$ref": "#/definitions/defs/boxShadow "
+              "$ref": "#/definitions/defs/boxShadow"
             }
           },
           "textBaseline": {
             "description": "The common baseline that should be aligned between this text and its parent text.",
-            "$ref": "#/definitions/defs/textBaseline "
+            "$ref": "#/definitions/defs/textBaseline"
           },
           "wordSpacing": {
             "description": "The amount of space to add at each sequence of white-space.",
@@ -1948,7 +1977,7 @@
         },
         "additionalProperties": false
       },
-      "textAlign ": {
+      "textAlign": {
         "title": "TextAlign",
         "description": "Component of type TextAlign.",
         "type": "string",
@@ -1961,7 +1990,7 @@
           "end"
         ]
       },
-      "textAlignVertical ": {
+      "textAlignVertical": {
         "title": "TextAlignVertical",
         "description": "Component of type TextAlignVertical.",
         "type": "string",
@@ -1971,7 +2000,7 @@
           "top"
         ]
       },
-      "textDecoration ": {
+      "textDecoration": {
         "title": "Text Decoration",
         "description": "Allows you to underline, overline or strike out the text.",
         "type": "string",
@@ -1983,7 +2012,7 @@
         ],
         "default": "none"
       },
-      "textDecorationStyle ": {
+      "textDecorationStyle": {
         "title": "Text Decoration Style",
         "description": "The style in which to draw a text decoration.",
         "type": "string",
@@ -1996,13 +2025,13 @@
         ],
         "default": "solid"
       },
-      "boxShadow ": {
+      "boxShadow": {
         "title": "BoxShadow",
         "description": "Element of type BoxShadow",
         "type": "object",
         "properties": {
           "color": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "blurRadius": {
             "description": "The blur radius",
@@ -2015,12 +2044,12 @@
             "default": 0
           },
           "offset": {
-            "$ref": "#/definitions/defs/offset "
+            "$ref": "#/definitions/defs/offset"
           }
         },
         "additionalProperties": false
       },
-      "textBaseline ": {
+      "textBaseline": {
         "title": "TextBaseline",
         "description": "A horizontal line used for aligning text.",
         "type": "string",
@@ -2030,7 +2059,7 @@
         ],
         "default": "alphabetic"
       },
-      "offset ": {
+      "offset": {
         "title": "Offset",
         "description": "Element of type Offset",
         "type": "object",
@@ -2048,7 +2077,7 @@
         },
         "additionalProperties": false
       },
-      "textLeadingDistribution ": {
+      "textLeadingDistribution": {
         "title": "TextLeadingDitribution",
         "description": "The TextLeadingDistribution enum.",
         "type": "string",
@@ -2058,7 +2087,7 @@
         ],
         "default": "even"
       },
-      "inputBorder ": {
+      "inputBorder": {
         "title": "InputBorder",
         "description": "Element of type InputBorder",
         "type": "object",
@@ -2072,10 +2101,10 @@
             "default": "underline"
           },
           "borderRadius": {
-            "$ref": "#/definitions/defs/borderRadius "
+            "$ref": "#/definitions/defs/borderRadius"
           },
           "borderSide": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           }
         },
         "required": [
@@ -2083,7 +2112,7 @@
         ],
         "additionalProperties": false
       },
-      "boxConstraints ": {
+      "boxConstraints": {
         "title": "BoxConstraints",
         "description": "Element of type BoxConstraints",
         "type": "object",
@@ -2111,7 +2140,7 @@
         },
         "additionalProperties": false
       },
-      "floatingLabelBehavior ": {
+      "floatingLabelBehavior": {
         "title": "FloatingLabelBehavior",
         "description": "Element of type FloatingLabelBehavior.",
         "type": "string",
@@ -2121,22 +2150,22 @@
           "never"
         ]
       },
-      "borderRadius ": {
+      "borderRadius": {
         "title": "BorderRadius",
         "description": "Element of type BorderRadius",
         "type": "object",
         "properties": {
           "topLeft": {
-            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType "
+            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType"
           },
           "topRight": {
-            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType "
+            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType"
           },
           "bottomLeft": {
-            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType "
+            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType"
           },
           "bottomRight": {
-            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType "
+            "$ref": "#/definitions/defs/borderRadius/definitions/radiusType"
           }
         },
         "additionalProperties": false,
@@ -2157,7 +2186,7 @@
           }
         }
       },
-      "borderSide ": {
+      "borderSide": {
         "title": "BorderSide",
         "description": "Element of type BorderSide",
         "type": "object",
@@ -2168,12 +2197,12 @@
             "default": 1
           },
           "color": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           }
         },
         "additionalProperties": false
       },
-      "locale ": {
+      "locale": {
         "title": "Locale",
         "description": "Element of type locale",
         "type": "object",
@@ -2193,7 +2222,7 @@
         },
         "additionalProperties": false
       },
-      "alignment ": {
+      "alignment": {
         "title": "Alignment",
         "description": "The alignment to use.",
         "type": "string",
@@ -2210,7 +2239,7 @@
         ],
         "default": "center"
       },
-      "stackFit ": {
+      "stackFit": {
         "title": "StackFit",
         "description": "The StackFit enum.",
         "type": "string",
@@ -2221,24 +2250,24 @@
         ],
         "default": "passthrough"
       },
-      "sliderStyle ": {
+      "sliderStyle": {
         "title": "SliderStyle",
         "description": "Element of type SliderStyle",
         "type": "object",
         "properties": {
           "activeColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "inactiveColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "thumbColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           }
         },
         "additionalProperties": false
       },
-      "materialTapTargetSize ": {
+      "materialTapTargetSize": {
         "title": "Material Tap Target Size",
         "description": "Element of type MaterialTapTargetSize",
         "type": "string",
@@ -2248,38 +2277,38 @@
         ],
         "additionalProperties": false
       },
-      "radioStyle ": {
+      "radioStyle": {
         "title": "Radio Style",
         "description": "Element of type RadioStyle",
         "type": "object",
         "properties": {
           "activeColor": {
             "description": "Color of the active radio button",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "focusColor": {
             "description": "Color of the radio when it is focused",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "hovercolor": {
             "description": "Color when the mouse is over the element",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "unselectedColor": {
             "description": "Color when the radio is not selected",
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "splashRadius": {
             "description": "The splash radius of the radio button",
             "type": "number"
           },
           "visualDensity": {
-            "$ref": "#/definitions/defs/visualDensity "
+            "$ref": "#/definitions/defs/visualDensity"
           }
         },
         "additionalProperties": false
       },
-      "visualDensity ": {
+      "visualDensity": {
         "title": "VisualDensity",
         "description": "The visual density of UI components.",
         "type": "string",
@@ -2291,7 +2320,7 @@
         "default": "standard",
         "additionalProperties": false
       },
-      "rect ": {
+      "rect": {
         "title": "Rect",
         "description": "Element of type Rect",
         "type": "object",
@@ -2315,7 +2344,7 @@
         },
         "additionalProperties": false
       },
-      "filterQuality ": {
+      "filterQuality": {
         "title": "Filter Quality",
         "description": "The filter quality to use.",
         "type": "string",
@@ -2327,7 +2356,7 @@
         ],
         "default": "low"
       },
-      "boxFit ": {
+      "boxFit": {
         "title": "Box Fit",
         "description": "How the box should be fitted in its parent.",
         "type": "string",
@@ -2342,7 +2371,7 @@
         ],
         "default": "contain"
       },
-      "imageRepeat ": {
+      "imageRepeat": {
         "title": "Image Repeat",
         "description": "How the image should be painted on the areas that it does not cover.",
         "type": "string",
@@ -2354,7 +2383,7 @@
         ],
         "default": "noRepeat"
       },
-      "iconName ": {
+      "iconName": {
         "title": "IconName",
         "description": "All of the possible values for an Icon.",
         "type": "string",
@@ -4200,7 +4229,7 @@
           "zoom_out_outlined"
         ]
       },
-      "flexFit ": {
+      "flexFit": {
         "title": "FlexFit",
         "description": "How a flexible child is inscribed into the available space.",
         "type": "string",
@@ -4210,7 +4239,7 @@
         ],
         "default": "loose"
       },
-      "size ": {
+      "size": {
         "title": "Size",
         "description": "The size to use, the component will be sized according to the value.",
         "type": "string",
@@ -4221,7 +4250,7 @@
         ],
         "default": "medium"
       },
-      "style ": {
+      "style": {
         "title": "Style",
         "description": "The style to use, the component will be changed according to the theme.",
         "type": "string",
@@ -4232,47 +4261,47 @@
         ],
         "default": "primary"
       },
-      "border ": {
+      "border": {
         "title": "Border",
         "description": "Element of type Border",
         "type": "object",
         "properties": {
           "top": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           },
           "left": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           },
           "bottom": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           },
           "right": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           }
         },
         "additionalProperties": false
       },
-      "boxDecoration ": {
+      "boxDecoration": {
         "title": "BoxDecoration",
         "description": "Element of type BoxDecoration",
         "type": "object",
         "properties": {
           "borderRadius": {
-            "$ref": "#/definitions/defs/borderRadius "
+            "$ref": "#/definitions/defs/borderRadius"
           },
           "boxShadow": {
-            "$ref": "#/definitions/defs/boxShadow "
+            "$ref": "#/definitions/defs/boxShadow"
           },
           "color": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "shape": {
-            "$ref": "#/definitions/defs/boxShape "
+            "$ref": "#/definitions/defs/boxShape"
           }
         },
         "additionalProperties": false
       },
-      "boxShape ": {
+      "boxShape": {
         "title": "BoxShape",
         "description": "The BoxShape enum, used to define the shape of a box.",
         "type": "string",
@@ -4282,51 +4311,51 @@
         ],
         "default": "rectangle"
       },
-      "checkboxStyle ": {
+      "checkboxStyle": {
         "title": "CheckboxStyle",
         "description": "Element of type CheckboxStyle",
         "type": "object",
         "properties": {
           "activeColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "checkColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "focusColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "hoverColor": {
-            "$ref": "#/definitions/defs/color "
+            "$ref": "#/definitions/defs/color"
           },
           "splashRadius": {
             "description": "The splash radius.",
             "type": "number"
           },
           "visualDensity": {
-            "$ref": "#/definitions/defs/visualDensity "
+            "$ref": "#/definitions/defs/visualDensity"
           },
           "shape": {
-            "$ref": "#/definitions/defs/outlinedBorder "
+            "$ref": "#/definitions/defs/outlinedBorder"
           },
           "side": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           }
         },
         "additionalProperties": false
       },
-      "outlinedBorder ": {
+      "outlinedBorder": {
         "title": "OutlinedBorder",
         "description": "Element of type OutlinedBorder",
         "type": "object",
         "properties": {
           "side": {
-            "$ref": "#/definitions/defs/borderSide "
+            "$ref": "#/definitions/defs/borderSide"
           }
         },
         "additionalProperties": false
       },
-      "carouselOptions ": {
+      "carouselOptions": {
         "title": "CarouselOptions",
         "description": "Element of type CarouselOptions",
         "type": "object",
@@ -4343,10 +4372,10 @@
             "default": false
           },
           "autoPlayInterval": {
-            "$ref": "#/definitions/defs/duration "
+            "$ref": "#/definitions/defs/duration"
           },
           "autoPlayAnimationDuration": {
-            "$ref": "#/definitions/defs/duration "
+            "$ref": "#/definitions/defs/duration"
           },
           "pauseAutoPlayOnTouch": {
             "type": "boolean",
@@ -4367,7 +4396,7 @@
             "default": false
           },
           "scrollDirection": {
-            "$ref": "#/definitions/defs/direction "
+            "$ref": "#/definitions/defs/direction"
           },
           "viewportFraction": {
             "type": "number",
@@ -4385,7 +4414,7 @@
         },
         "additionalProperties": false
       },
-      "duration ": {
+      "duration": {
         "title": "Duration",
         "description": "Element of type Duration",
         "type": "object",
