@@ -1,0 +1,42 @@
+$id: https://test.fr/manifest.json
+title: Manifest
+description: The Lenra application manifest
+type: object
+properties:
+  lenra: 
+    description: The Lenra exposer definition of the application
+    $ref: "#/definitions/exposer"
+  json: 
+    description: The JSON exposer definition of the application
+    $ref: "#/definitions/exposer"
+additionalProperties: false
+oneOf:
+- required:
+  - lenra
+- required:
+  - json
+definitions:
+  exposer: 
+    type: object
+    properties:
+      version: 
+        type: string
+      routes: 
+        description: The routes of the application for this exposer
+        type: array
+        items:
+          $ref: "#/definitions/route"
+    required:
+    - routes
+    additionalProperties: false
+  route: 
+    type: object
+    properties:
+      path: 
+        type: string
+      view: 
+        $ref: "../components-api/api/components/view.schema.json"
+    required:
+    - path
+    - view
+    additionalProperties: false
