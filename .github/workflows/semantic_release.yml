@@ -8,6 +8,9 @@ on:
       - alpha
       - "*.x"
 
+permissions:
+  contents: write
+
 jobs:
   get-next-version:
     uses: lenra-io/github-actions/.github/workflows/get-version.yml@main
