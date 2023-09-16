@@ -11,6 +11,7 @@ interface SchemaLoader {
 interface JsonSchemaUnifierOptions {
     logs?: boolean;
     definitionsPath?: string;
+    definitionsPathSeparator?: string;
 }
 
 
@@ -30,6 +31,7 @@ export class JsonSchemaUnifier {
      */
     constructor(schemaPath: string, options: JsonSchemaUnifierOptions = {}) {
         options.definitionsPath = options.definitionsPath || "definitions";
+        options.definitionsPathSeparator = options.definitionsPathSeparator || "/";
         this.options = options;
         this.mainSchemaPath = resolve(schemaPath);
         this.schemata = { [this.mainSchemaPath]: { newPath: "#" } };
@@ -114,7 +116,7 @@ export class JsonSchemaUnifier {
         if (parts.length > 1) {
             defPathParts.push(...parts[1].split("/").filter(p => p));
         }
-        return `#/${this.options.definitionsPath}/${defPathParts.join("/")}`;
+        return `#/${this.options.definitionsPath}/${defPathParts.join(this.options.definitionsPathSeparator)}`;
     }
 
     private unifySchemata(): any {
