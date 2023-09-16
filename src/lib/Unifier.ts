@@ -85,7 +85,12 @@ export class JsonSchemaUnifier {
             let schema: any;
             if (parts.length > 1) {
                 schema = await this.loadSchema(filePath);
-                schema = parts[1].split("/").filter(p => p).reduce((schema, key) => schema[key], schema);
+                const inParts = parts[1].split("/").filter(p => p);
+                const lastKey = inParts.pop();
+                const parent = inParts.reduce((schema, key) => schema[key], schema);
+                schema = parent[lastKey];
+                if (filePath !== this.mainSchemaPath)
+                    parent[lastKey] = undefined;
             }
             else {
                 const schemaContent = await readFile(filePath, 'utf-8');
@@ -122,8 +127,16 @@ export class JsonSchemaUnifier {
     private unifySchemata(): any {
         const unifiedSchema = this.schemata[this.mainSchemaPath].schema;
         Object.keys(this.schemata)
-            .filter(schemaPath => schemaPath.split("#").length === 1 && schemaPath !== this.mainSchemaPath)
-            .forEach(schemaPath => {
+            .map(schemaPath => {
+                const parts = schemaPath.split("#");
+                return {
+                    schemaPath,
+                    file: parts[0],
+                    path: parts[1]
+                };
+            })
+            .filter(({ file }) => file !== this.mainSchemaPath)
+            .forEach(({ schemaPath }) => {
                 this.log("Adding", schemaPath);
                 const loader = this.schemata[schemaPath];
                 const pathParts = loader.newPath.split("#")[1].split("/").filter(p => p);
@@ -133,6 +146,7 @@ export class JsonSchemaUnifier {
                     return schema[key];
                 }, unifiedSchema);
                 // Remove not needed properties
+                if (!loader.schema) throw new Error("Schema not loaded for " + schemaPath);
                 delete loader.schema['$schema'];
                 delete loader.schema['$id'];
                 parent[lastKey] = loader.schema;
