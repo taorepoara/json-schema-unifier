@@ -74,20 +74,26 @@ export class JsonSchemaUnifier {
 
     private async loadSchema(schemaPath: string) {
         if (this.schemata[schemaPath].schema) return this.schemata[schemaPath].schema;
-        this.log("Loading", schemaPath);
-        const parts = schemaPath.split("#");
-        const filePath = parts[0];
-        let schema: any;
-        if (parts.length > 1) {
-            schema = await this.loadSchema(filePath);
-            schema = parts[1].split("/").filter(p => p).reduce((schema, key) => schema[key], schema);
+        try {
+            this.log("Loading", schemaPath);
+            const parts = schemaPath.split("#");
+            const filePath = parts[0];
+            let schema: any;
+            if (parts.length > 1) {
+                schema = await this.loadSchema(filePath);
+                schema = parts[1].split("/").filter(p => p).reduce((schema, key) => schema[key], schema);
+            }
+            else {
+                const schemaContent = await readFile(filePath, 'utf-8');
+                schema = filePath.endsWith(".json") ? JSON.parse(schemaContent) : YAML.parse(schemaContent);
+                this.replaceRefs(filePath, schema);
+            }
+            this.schemata[schemaPath].schema = schema;
         }
-        else {
-            const schemaContent = await readFile(filePath, 'utf-8');
-            schema = filePath.endsWith(".json") ? JSON.parse(schemaContent) : YAML.parse(schemaContent);
-            this.replaceRefs(filePath, schema);
+        catch (error) {
+            console.error("Error occurred while loading schema", schemaPath, error);
+            throw error;
         }
-        this.schemata[schemaPath].schema = schema;
     }
 
     private newPath(path: string): string {
