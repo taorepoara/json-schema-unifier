@@ -12,6 +12,8 @@ interface JsonSchemaUnifierOptions {
     logs?: boolean;
     definitionsPath?: string;
     definitionsPathSeparator?: string;
+    /** If defined, the definitions path will be relative to the value. By default, it's relative to the main schema */
+    baseDir?: string;
 }
 
 
@@ -109,15 +111,19 @@ export class JsonSchemaUnifier {
         this.log("newPath", path);
         const parts = path.split("#");
         if (parts[0] === this.mainSchemaPath) return `#${parts[1]}`;
-        const relativePath = relative(this.mainSchemaPath, parts[0]);
+        const relativePath = relative(this.options.baseDir ? this.options.baseDir : this.mainSchemaPath, parts[0]);
         this.log("Relative path", relativePath);
-        const defPathParts = [
-            ...relativePath
-                .replace(/^(\.+[\\/])+/i, "")
-                .replace(/(\.schema)?\.(json|yaml|yml)$/i, "")
-                .split("/")
-                .filter(p => p)
-        ];
+        const defPathParts = relativePath
+            .replace(/(\.schema)?\.(json|yaml|yml)$/i, "")
+            .split("/")
+            .filter(p => p && p !== ".");
+        while (defPathParts.includes('..')) {
+            const index = defPathParts.indexOf('..');
+            if (index > 0)
+                defPathParts.splice(index - 1, 2);
+            else
+                defPathParts.splice(index, 1);
+        }
         if (parts.length > 1) {
             defPathParts.push(...parts[1].split("/").filter(p => p));
         }
